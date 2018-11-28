@@ -1,0 +1,15 @@
+{
+  "status": "SUCCESS",
+  "data": 
+    {
+      "title":"阿萨姆奶茶",
+      "customerName":"张三",
+      "address":"北京物资学院",
+      "account":"￥100.00",
+      "requestTime":"2018-01-01 00:00:00",
+      "phone":"123",
+      "status": "待处理",
+      "operation":"读操作",
+      "remark":"暂无"
+    }
+}
