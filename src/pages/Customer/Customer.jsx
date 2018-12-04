@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import OrderList from './components/OrderList';
-import TagMessageList from './components/TagMessageList';
+// import TagMessageList from './components/TagMessageList';
 
 export default class Customer extends Component {
   static displayName = 'Customer';
@@ -13,7 +13,7 @@ export default class Customer extends Component {
   render() {
     return (
       <div className="customer-page">
-        <TagMessageList />
+        {/* <TagMessageList /> */}
         <OrderList />
         
       </div>

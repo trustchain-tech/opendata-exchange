@@ -1,0 +1,16 @@
+{
+    "status": "SUCCESS",
+    "data": 
+      {
+        "title":"北京市海淀区4月份租房信息",
+        "customerName":"张四",
+        "address":"北京",
+        "account":"60.00",
+        "requestTime":"2018-11-11 23:30:33",
+        "phone":"7891",
+        "status": "待处理",
+        "operation":"读操作",
+        "remark":"暂无"
+      }
+  }
+  

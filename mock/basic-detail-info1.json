@@ -1,0 +1,16 @@
+{
+    "status": "SUCCESS",
+    "data": 
+      {
+        "title":"视觉定位导航系统",
+        "customerName":"张四",
+        "address":"北京航空航天大学",
+        "account":"20000.00",
+        "requestTime":"2018-11-11 23:11:11",
+        "phone":"456",
+        "status": "待处理",
+        "operation":"读操作",
+        "remark":"暂无"
+      }
+  }
+  

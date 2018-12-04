@@ -4,24 +4,32 @@ import { Chart, Geom, Axis, Tooltip } from 'bizcharts';
 
 const data = [
   {
-    name: '待合并 MR',
+    name: '2018.12.03',
     value: 38,
   },
   {
-    name: '合并 MR',
+    name: '2018.12.04',
     value: 0,
   },
   {
-    name: '新增 MR',
+    name: '2018.12.05',
     value: 61,
   },
   {
-    name: '已拒绝 MR',
+    name: '2018.12.06',
     value: 10,
   },
   {
-    name: '已关闭 MR',
-    value: 89,
+    name: '2018.12.07',
+    value: 39,
+  },
+  {
+    name: '2018.12.08',
+    value: 23,
+  },
+  {
+    name: '2018.12.09',
+    value: 36,
   },
 ];
 
@@ -45,7 +53,7 @@ export default class BarChart extends Component {
 
   render() {
     return (
-      <IceContainer title="本周 MR">
+      <IceContainer title="本周销量">
         <Chart height={400} padding={[40]} data={data} scale={cols} forceFit>
           <Axis name="name" />
           <Axis name="value" />

@@ -31,16 +31,16 @@ const asideMenuConfig = [
   //   path: '/member',
   //   icon: 'person',
   // },
-  {
-    name: '设置',
-    path: '/setting',
-    icon: 'shezhi',
-  },
-  {
-    name: 'detail',
-    path: '/detail',
-    icon: 'home',
-  },
+  // {
+  //   name: '设置',
+  //   path: '/setting',
+  //   icon: 'shezhi',
+  // },
+  // {
+  //   name: 'detail',
+  //   path: '/detail',
+  //   icon: 'home',
+  // },
   {
     name: 'seller',
     path: '/seller',
@@ -51,6 +51,11 @@ const asideMenuConfig = [
     path: '/customer',
     icon: 'home',
   },
+  // {
+  //   name: 'cusdetail',
+  //   path: '/cusdetail',
+  //   icon: 'home',
+  // },
 ];
 
 export { headerMenuConfig, asideMenuConfig };

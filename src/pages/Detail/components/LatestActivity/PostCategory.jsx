@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios"
+import Coin from "../../../../../build/contracts/Coin.json";
+import Web3 from "web3";
+import TruffleContract from "truffle-contract";
 
 import { Tab, Button } from '@icedesign/base';
 
@@ -14,35 +17,115 @@ export default class PostCategory extends Component {
    }
     this.state = {
       data:[],
-      result : result
+      result : result,
+      web3Provider : null,
+      contracts : {},
+      url : '',
+      req : {}
     };
   }
 
-  applygrant = () => {
-    if (confirm("您确定申请授权？")) {
-      alert("申请成功！请您耐心等待卖家授权！");
-    }
-  }
-
-  componentWillMount() {
-    console.log(typeof this.state.result)
+  componentWillMount = async () => {
     let url = '';
     switch(this.state.result){
       case '0' : url= '/mock/detail.json'; break;
       case '1': url= '/mock/detail1.json'; break;
+      case '2': url= '/mock/detail2.json'; break;
+      case '3': url= '/mock/detail3.json'; break;
+      case '4': url= '/mock/detail4.json'; break;
+      case '5': url= '/mock/detail5.json'; break;
+      case '6': url= '/mock/detail6.json'; break;
+      case '7': url= '/mock/detail7.json'; break;
+      case '8': url= '/mock/detail8.json'; break;
+      case '9': url= '/mock/detail9.json'; break;
+      case '10': url= '/mock/detail10.json'; break;
+      case '11': url= '/mock/detail11.json'; break;
       default : break;
     }
-    console.log(url)
-    axios
-      .get(url)
-      .then((response) => {
-        this.setState({
-          data: response.data.data === undefined ? ([]) : response.data.data,
-        });
+    let result = await axios.get(url)
+     this.setState({
+       data : result.data.data
+     })  
+    if(typeof web3 !== 'undefined'){
+      this.setState({
+        web3Provider : web3.currentProvider
       })
-      .catch((error) => {
-        console.log(error);
-      }); 
+      web3 = new Web3(web3.currentProvider);
+      
+    }else{
+      web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:8545"));
+    }
+    this.setState({
+      web3Provider : web3.currentProvider,
+      web3 : web3
+    })
+    this.initContract();
+  }
+
+  initContract = () => {
+    //let Purchase = TruffleContract(Coin);
+    this.setState({Purchase : TruffleContract(Coin)})
+    this.state.Purchase.setProvider(this.state.web3Provider);
+  }
+
+
+  grant = () => {
+    //var purchaseInstance;
+    let athis = this;
+    this.state.web3.eth.getAccounts(function(err,accounts){
+      if(err){
+        console.log(err)
+      }else{
+
+        athis.state.Purchase.deployed().then(function(instance){
+          console.log(athis.state.data)
+          let purchaseInstance = instance;
+            let str = '0x18bA6f84FDCb2B26892493aEC5885C8315584c47'
+          return purchaseInstance.transfer(str,10*1e2, {from : accounts[0]});
+        }).then(function(result) {
+          let value = {};
+          value.txHash = result.tx;
+          value.blockNumber = result.receipt.blockNumber;
+          athis.state.Purchase.deployed().then(function(ins){
+            return ins.getMessage.call();
+          }).then(function(res){
+            value.userId = res;
+            console.log(value)
+            alert("申请成功")
+          })
+        }) 
+      }
+    })
+  }
+
+  buy = () => {
+    //var purchaseInstance;
+    let athis = this;
+    this.state.web3.eth.getAccounts(function(err,accounts){
+      if(err){
+        console.log(err)
+      }else{
+
+        athis.state.Purchase.deployed().then(function(instance){
+         // console.log(123,instance)
+          let purchaseInstance = instance;
+            let str = '0x18bA6f84FDCb2B26892493aEC5885C8315584c47'
+            let price = JSON.parse(athis.state.data[2].desc)*100;
+          return purchaseInstance.transfer(str,price, {from : accounts[0]});
+        }).then(function(result) {
+          let value = {};
+          value.txHash = result.tx;
+          value.blockNumber = result.receipt.blockNumber;
+          athis.state.Purchase.deployed().then(function(ins){
+            return ins.getMessage.call();
+          }).then(function(res){
+            value.userId = res;
+            console.log(value)
+            alert("购买成功")
+          })
+        }) 
+      }
+    })
   }
 
   render() {
@@ -55,7 +138,9 @@ export default class PostCategory extends Component {
           {
             title: '数据信息',
             cover: require('./images/lock.jpg'),
-            data :this.state.data}]
+            data :this.state.data
+          }
+          ]
       },
     ];
    
@@ -115,9 +200,18 @@ export default class PostCategory extends Component {
                           type="primary"
                           component="a"
                           href={item.url}
-                          onClick = {this.applygrant}
+                          onClick= {() => {this.grant()}}
                         >
                           申请授权
+                        </Button>
+                        <Button
+                          style={styles.buyBtn}
+                          type="normal"
+                          component="a"
+                          href={item.url}
+                          onClick= {() => {this.buy()}}
+                        >
+                          购买
                         </Button>
                       </div>
                     </div>
@@ -189,11 +283,24 @@ const styles = {
     lineHeight: '35px',
   },
   blockBtn: {
-    position: 'absolute',
-    right: '10px',
-    bottom: '10px',
-    borderRadius: '3px',
-    background: '#6af',
-    color: '#fff',
+    height: 40,
+    fontSize: 16,
+    padding: '0 58px',
+    bottom: '-100px',
+    lineHeight: '40px',
+    backgroundColor: '#5485f7',
+    color: '#ffffff',
+  },
+  buyBtn: {
+    height: 40,
+    fontSize: 16,
+    padding: '0 58px',
+    lineHeight: '40px',
+    bottom: '-100px',
+    right: '-50px',
+    marginRight: 15,
+    backgroundColor: 'transparent',
+    borderColor: '#5485f7',
+    color: '#5485f7',
   },
 };

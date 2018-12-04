@@ -29,6 +29,16 @@ export default class LatestActivity extends Component {
     switch(this.state.result){
       case '0' : url= '/mock/grant_list.json'; break;
       case '1': url= '/mock/grant_list1.json'; break;
+      case '2': url= '/mock/grant_list2.json'; break;
+      case '3': url= '/mock/grant_list3.json'; break;
+      case '4': url= '/mock/grant_list4.json'; break;
+      case '5': url= '/mock/grant_list5.json'; break;
+      case '6': url= '/mock/grant_list6.json'; break;
+      case '7': url= '/mock/grant_list7.json'; break;
+      case '8': url= '/mock/grant_list8.json'; break;
+      case '9': url= '/mock/grant_list9.json'; break;
+      case '10': url= '/mock/grant_list10.json'; break;
+      case '11': url= '/mock/grant_list11.json'; break;
       default : break;
     }
     console.log(url)

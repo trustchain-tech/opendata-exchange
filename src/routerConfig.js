@@ -11,6 +11,7 @@ import Detail from './pages/Detail';
 import Seller from './pages/Seller';
 import RequestDetail from './pages/RequestDetail';
 import Customer from './pages/Customer';
+import Cusdetail from './pages/Cusdetail';
 import Setting from './pages/Setting';
 
 const routerConfig = [
@@ -58,6 +59,11 @@ const routerConfig = [
     path: '/customer',
     layout: BasicLayout,
     component: Customer,
+  },
+  {
+    path: '/cusdetail',
+    layout: BasicLayout,
+    component: Cusdetail,
   },
 ];
 

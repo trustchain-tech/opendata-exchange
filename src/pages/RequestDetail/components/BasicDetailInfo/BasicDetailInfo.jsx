@@ -5,26 +5,6 @@ import { Grid, Button } from '@icedesign/base';
 
 const { Row, Col } = Grid;
 
-/**
- * 渲染详情信息的数据
- */
- const dataSource = {
-   title: '阿萨姆奶茶',
-   customerName: '张三',
-   address: '杭州市文一西路',
-   account: '200.00',
-   requestTime: '2017-10-18 12:20:07',
-   phone: '15612111213',
-   status: '待处理',
-   operation:'读操作',
-   remark: '暂无',
-   pics: [
-     'https://img.alicdn.com/imgextra/i3/672246894/TB2ziLDdbsTMeJjSszdXXcEupXa_!!672246894-0-beehive-scenes.jpg_180x180xzq90.jpg_.webp',
-     'https://img.alicdn.com/imgextra/i1/2645911918/TB2qQA9fk.HL1JjSZFuXXX8dXXa_!!2645911918-0-beehive-scenes.jpg_180x180xzq90.jpg_.webp',
-     'https://img.alicdn.com/bao/uploaded/TB2obaBXeLyQeBjy1XaXXcexFXa_!!0-dgshop.jpg_180x180xzq90.jpg_.webp',
-     'https://img.alicdn.com/tps/i1/99136475/TB2Cc7saE1HTKJjSZFmXXXeYFXa_!!0-juitemmedia.jpg_180x180q90.jpg_.webp',
-   ],
- };
 
 export default class BasicDetailInfo extends Component {
   static displayName = 'BasicDetailInfo';
@@ -37,16 +17,31 @@ export default class BasicDetailInfo extends Component {
 
   constructor(props) {
     super(props);
+    let result;
+    if (window.location.hash.indexOf("?")!=-1) {
+      result = window.location.hash.substr(window.location.hash.indexOf("=")).split("=")[1];
+   }
     this.state = {
       data: {},
+      result : result
     };
     console.log(this.state.data);
   }
  
 
   componentWillMount() {
+    
+    let url = '';
+    switch(this.state.result){
+      case '0' : url= '/mock/basic-detail-info.json'; break;
+      case '1': url= '/mock/basic-detail-info1.json'; break;
+      case '2': url= '/mock/basic-detail-info2.json'; break;
+      case '3': url= '/mock/basic-detail-info3.json'; break;
+      default : break;
+    }
+
       axios
-        .get('/mock/basic-detail-info.json')
+        .get(url)
         .then((response) => {
           console.log(response.data.data);
           this.setState({
@@ -123,23 +118,6 @@ export default class BasicDetailInfo extends Component {
               <span style={styles.infoItemLabel}>备注：</span>
               <span style={styles.infoItemValue}>{ this.state.data.remark}</span>
             </Col>
-            {/* <Col xxs="24" l="12" style={styles.infoItem}>
-              <span style={styles.attachLabel}>附件：</span>
-              <span>
-                {dataSource.pics &&
-                  dataSource.pics.length &&
-                  dataSource.pics.map((pic, index) => {
-                    return (
-                      <img
-                        key={index}
-                        src={pic}
-                        style={styles.attachPics}
-                        alt="图片"
-                      />
-                    );
-                  })}
-              </span>
-            </Col> */}
           </Row>    
         </div>
         <div style={styles.infoColumn}>
@@ -197,12 +175,6 @@ const styles = {
     minWidth: '70px',
     color: '#999',
     float: 'left',
-  },
-  attachPics: {
-    width: '80px',
-    height: '80px',
-    border: '1px solid #eee',
-    marginRight: '10px',
   },
   buttons: { textAlign: 'center', marginTop: 33 },
   primaryButton: {

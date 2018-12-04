@@ -51,10 +51,6 @@ export default class ServiceCard extends Component {
                   <div style={styles.tag}>{item.tag}</div>
                 </div>
                 <div style={styles.footer}>
-                  {/* <a href="#/detail" style={{ ...styles.link, ...styles.line }}>
-                    <Icon type="office" size="small" style={styles.icon} />{' '}
-                    文档帮助
-                  </a> */}
                   <a onClick={()=>{
                     this.a(index)
                   }} style={styles.link}>

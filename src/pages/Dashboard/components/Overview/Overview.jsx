@@ -7,24 +7,20 @@ const { Row, Col } = Grid;
 
 const mockData = [
   {
-    title: '计划中(个)',
-    value: '87',
+    title: '总商品数(个)',
+    value: '999',
   },
   {
-    title: '正在进行中(个)',
-    value: '62',
+    title: '在售商品数(个)',
+    value: '865',
   },
   {
-    title: '已完成(个)',
-    value: '123',
+    title: '总销量(个)',
+    value: '1996',
   },
   {
-    title: '完成平均时长(天)',
-    value: '39',
-  },
-  {
-    title: '参与成员(人)',
-    value: '18',
+    title: '卖家数(人)',
+    value: '650',
   },
 ];
 
@@ -43,7 +39,7 @@ export default class Overview extends Component {
   render() {
     return (
       <div>
-        <ContainerTitle title="本周概览" />
+        <ContainerTitle title="概览" />
         <IceContainer style={styles.container}>
           <Row>
             <Col l="4">

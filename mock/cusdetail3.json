@@ -1,0 +1,16 @@
+{
+    "status": "SUCCESS",
+    "data": 
+      {
+        "title":"智慧城市大数据智能分析和建模",
+        "sellerName":"中科聚信信息技术（北京）有限公司",
+        "customer":"李四",
+        "address":"北京航空航天大学",
+        "amount":"40000.00",
+        "time":"2018.01.08 11:36:05",
+        "status": "待处理",
+        "operation":"读操作",
+        "remark":"暂无"
+      }
+  }
+  

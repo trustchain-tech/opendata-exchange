@@ -4,38 +4,54 @@ import LineChart from '../LineChart';
 
 const data = [
   {
-    date: '2018-09-01',
-    acc: 0,
+    date: '2018年1月',
+    acc: 15,
   },
   {
-    date: '2018-09-02',
+    date: '2018年2月',
     acc: 20,
   },
   {
-    date: '2018-09-03',
+    date: '2018年3月',
     acc: 17,
   },
   {
-    date: '2018-09-04',
+    date: '2018年4月',
     acc: 20,
   },
   {
-    date: '2018-09-05',
+    date: '2018年5月',
     acc: 21,
   },
   {
-    date: '2018-09-06',
+    date: '2018年6月',
     acc: 20,
   },
   {
-    date: '2018-09-07',
+    date: '2018年7月',
     acc: 21,
   },
+  {
+    date: '2018年8月',
+    acc: 28,
+  },
+  {
+    date: '2018年9月',
+    acc: 16,
+  },
+  {
+    date: '2018年10月',
+    acc: 23,
+  },
+  {
+    date: '2018年11月',
+    acc: 11,
+  }
 ];
 
 const cols = {
   acc: {
-    alias: '讨论次数',
+    alias: '销量',
   },
 };
 
@@ -54,7 +70,7 @@ export default class Commits extends Component {
   render() {
     return (
       <div>
-        <IceContainer title="本周讨论">
+        <IceContainer title="2018年各月销量">
           <LineChart cols={cols} data={data} axisdate="date" />
         </IceContainer>
       </div>

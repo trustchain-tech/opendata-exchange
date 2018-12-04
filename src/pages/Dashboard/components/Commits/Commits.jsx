@@ -64,7 +64,7 @@ const data = [
 
 const cols = {
   acc: {
-    alias: '提交次数',
+    alias: '销量',
   },
 };
 
@@ -83,7 +83,7 @@ export default class Commits extends Component {
   render() {
     return (
       <div>
-        <ContainerTitle title="最近30天 Commits" />
+        <ContainerTitle title="最近30天销量" />
         <IceContainer style={styles.container}>
           <LineChart cols={cols} data={data} axisName="name" />
         </IceContainer>

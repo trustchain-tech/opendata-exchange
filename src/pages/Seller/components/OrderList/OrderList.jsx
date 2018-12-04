@@ -22,8 +22,8 @@ export default class OrderList extends Component {
   }
 
   /**
-   * 异步获取数据
-   */
+  * 异步获取数据
+  */
   getTableData = () => {
     axios
       .get('/mock/order-list.json')
@@ -33,13 +33,13 @@ export default class OrderList extends Component {
         });
       })
       .catch((error) => {
-        console.log(error); 
+        console.log(error);
       });
   };
 
   /**
-   * 渲染订单信息
-   */
+  * 渲染订单信息
+  */
   renderOrderInfo = (product) => {
     return (
       <div className="order-info" style={styles.orderInfo}>
@@ -52,28 +52,28 @@ export default class OrderList extends Component {
   };
 
   /**
-   * 渲染订单价格
-   */
+  * 渲染订单价格
+  */
   renderOrderPrice = (price) => {
     return <b>{price}</b>;
   };
 
   /**
-   * 渲染订单单号
-   */
+  * 渲染订单单号
+  */
   renderOrderNumber = (record) => {
     return <div>{record.product[0].title}</div>;
   };
   /**
   * 渲染订单时间
-   */
-   renderOrderTime = (time) => {
-     return <div>{time}</div>;
-   };
+  */
+  renderOrderTime = (time) => {
+    return <div>{time}</div>;
+  };
 
   /**
-   * 设置每一行的样式名称
-   */
+  * 设置每一行的样式名称
+  */
   getRowClassName = (record) => {
     if (record.status === 0) {
       return 'highlight-row';
@@ -81,29 +81,37 @@ export default class OrderList extends Component {
   };
 
   /**
-   * 渲染操作行
-   */
-  renderOperation = () => {
-    return (
-      <a href="#/requestDetail" style={styles.orderDetailLink}>
-        查看
-      </a>
-    );
-  };
+  * 渲染操作行
+  */
+ a (index){
+  window.location.href = '/#/RequestDetail?id=' + index
+ }
+
+renderOperation = (item,index) => {
+  //alert(index);
+  return (
+    <a onClick = {() =>{this.a(index)}} style={styles.orderDetailLink}>
+      查看
+    </a>
+  );
+};
+  
 
   /**
-   * 选中当前行的回调
-   */
+  * 选中当前行的回调
+  */
   handleRowSelection = (selectedRowKeys, records) => {
     console.log('selectedRowKeys:', selectedRowKeys);
     console.log('records:', records);
   };
-
+  
   render() {
+    
     const rowSelection = {
       onChange: this.handleRowSelection,
-      mode: 'single',
+      mode: 'single'
     };
+    console.log();
 
     const { tableData } = this.state;
 
@@ -146,6 +154,7 @@ export default class OrderList extends Component {
     );
   }
 }
+
 
 const styles = {
   orderImg: {

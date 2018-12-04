@@ -3,11 +3,6 @@ import IceContainer from '@icedesign/container';
 
 const list = [
   {
-    title: '个人主页',
-    img: '//gw.alicdn.com/tfscom/TB1OyT.RVXXXXcpXXXXXXXXXXXX.png',
-    url: '//www.taobao.com',
-  },
-  {
     title: '全部订单',
     img: '//gw.alicdn.com/tfscom/TB1OyT.RVXXXXcpXXXXXXXXXXXX.png',
     url: '//www.taobao.com',

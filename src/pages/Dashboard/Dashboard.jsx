@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid } from '@icedesign/base';
 import Overview from './components/Overview';
 import BarChart from './components/BarChart';
-import Commits from './components/Commits';
+// import Commits from './components/Commits';
 import Discussion from './components/Discussion';
 
 const { Row, Col } = Grid;
@@ -31,9 +31,9 @@ export default class Dashboard extends Component {
         <Col l="12">
           <Discussion />
         </Col>
-        <Col l="24">
+        {/* <Col l="24">
           <Commits />
-        </Col>
+        </Col> */}
       </Row>
     );
   }

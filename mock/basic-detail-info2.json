@@ -1,0 +1,16 @@
+{
+    "status": "SUCCESS",
+    "data": 
+      {
+        "title":"基于标准协同的医疗大数据集成分析平台",
+        "customerName":"张四",
+        "address":"北京航空航天大学",
+        "account":"43000.00",
+        "requestTime":"2018-11-11 23:30:33",
+        "phone":"789",
+        "status": "待处理",
+        "operation":"读操作",
+        "remark":"暂无"
+      }
+  }
+  
